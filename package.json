@@ -1,6 +1,6 @@
 {
   "name": "lr5-discord-dice-roller",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "discord dice bot for LR5",
   "main": "bot.js",
   "scripts": {
