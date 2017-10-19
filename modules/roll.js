@@ -90,11 +90,12 @@ function processType(params, message) {
       case 'white':
       case 'w':
       case 'skill':
+      case 's':
         finalOrder.push('white');
         break;
       case 'success':
       case 'suc':
-      case 's':
+      case '+':
         finalOrder.push('success');
         break;
       case 'strife':

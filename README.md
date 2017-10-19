@@ -10,10 +10,10 @@ Commands:
   - You may add " " at the end of the line to give the roll a name
 
   DICE IDENTIFIERS
-   - White/W/Skill = skill die
+   - White/W/Skill/S = skill die
    -  Black/B/Blk/Ring/R = ring die
    -  ExplosiveSuccess/Exp/E = explosive success
-   -  Success/Suc/S = success
+   -  Success/Suc/+ = success
    -  Oppertunity/O = oppertunity
    -  Strife/STR/T = strife
 
