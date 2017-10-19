@@ -19,12 +19,14 @@ client.on("message", message => {
   if (message.author.bot) return;
   //Ignore messages that dont start with the command symbol
   if (!message.content.includes(config.prefix)) return;
-  //establish which emoji to use
 
-  if (message.channel.permissionsFor(client.user).has('USE_EXTERNAL_EMOJIS') != true) {
-    message.channel.send(`Please enable \'Use External Emoji\' for ${client.user.username}`);
-    return;
+  if (message.channel.type !== "dm") {
+    if (message.channel.permissionsFor(bot.user).has('USE_EXTERNAL_EMOJIS') != true) {
+      message.channel.send(`Please enable \'Use External Emoji\' for ${bot.user.username}`);
+      return;
+    }
   }
+
   //Seperate and create a list of parameters. A space in the message denotes a new parameter
   if (!message.content.startsWith(config.prefix)) {
     var params = message.content.split(" ");
