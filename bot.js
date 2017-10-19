@@ -89,7 +89,7 @@ client.on("message", message => {
       help(params, message);
       break;
     case "ver":
-      message.channel.send(bot.user.username + ": version: " + version);
+      message.channel.send(client.user.username + ": version: " + version);
       break;
     default:
       break;
