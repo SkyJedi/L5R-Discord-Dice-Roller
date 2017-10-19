@@ -1,0 +1,33 @@
+{
+  "name": "lr5-discord-dice-roller",
+  "version": "1.0.0",
+  "description": "discord dice bot for LR5",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SkyJedi/LR5-Discord-Dice-Roller.git"
+  },
+  "keywords": [
+    "LR5",
+    "discord",
+    "dicebot",
+    "dice",
+    "fantasy",
+    "flight",
+    "games",
+    "FFG"
+  ],
+  "author": "SkyJedi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SkyJedi/LR5-Discord-Dice-Roller/issues"
+  },
+  "homepage": "https://github.com/SkyJedi/LR5-Discord-Dice-Roller#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "firebase": "^4.5.2"
+  }
+}
