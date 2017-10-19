@@ -23,8 +23,10 @@ Commands:
    - !roll wwwbb (must use single character identifiers)
    - !roll 1white 2black (must specify a number before each identifier)
 
-
-
+- !Poly: rolls any combination of polyhedral dice with optional modifier
+Examples:
+  !poly 1d4 2d6+1 1d100-60
+  
 - !help          Type '!help topic for further information
   - !roll        rolls any combination of lr5 dice and returns the results
 

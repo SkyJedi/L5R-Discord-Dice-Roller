@@ -4,7 +4,7 @@ const config = require('./config.json');
 const version = require('./package.json').version;
 var roll = require("./modules/roll.js").roll;
 var help = require("./modules/help.js").help;
-
+var poly = require("./modules/poly.js").poly;
 
 client.login(config.token);
 
@@ -92,6 +92,9 @@ client.on("message", message => {
       break;
     case "ver":
       message.channel.send(client.user.username + ": version: " + version);
+      break;
+    case "poly":
+    poly(params, message);
       break;
     default:
       break;
