@@ -21,8 +21,8 @@ client.on("message", message => {
   if (!message.content.includes(config.prefix)) return;
 
   if (message.channel.type !== "dm") {
-    if (message.channel.permissionsFor(bot.user).has('USE_EXTERNAL_EMOJIS') != true) {
-      message.channel.send(`Please enable \'Use External Emoji\' for ${bot.user.username}`);
+    if (message.channel.permissionsFor(client.user).has('USE_EXTERNAL_EMOJIS') != true) {
+      message.channel.send(`Please enable \'Use External Emoji\' for ${client.user.username}`);
       return;
     }
   }
