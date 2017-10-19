@@ -87,6 +87,10 @@ client.on("message", message => {
     case 'help':
     case 'h':
       help(params, message);
+      break;
+    case "ver":
+      message.channel.send(bot.user.username + ": version: " + version);
+      break;
     default:
       break;
   }
