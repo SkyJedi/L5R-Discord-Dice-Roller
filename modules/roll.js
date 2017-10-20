@@ -60,7 +60,10 @@ function initdiceResult() {
       success: 0,
       oppertunity: 0,
       strife: 0,
-      explosiveSuccess: 0
+      explosiveSuccess: {
+        white: 0,
+        black: 0,
+      }
     }
   };
   return diceResult;
@@ -156,6 +159,10 @@ function countSymbols(diceResult, message, client, desc) {
     success: 0,
     oppertunity: 0,
     strife: 0,
+    explosiveSuccess: {
+      white: 0,
+      black: 0,
+    },
   }
   Object.keys(diceResult.roll).forEach((color) => {
     diceResult.roll[color].forEach((face) => {
@@ -164,6 +171,7 @@ function countSymbols(diceResult, message, client, desc) {
       for(let i=0; face.length > i; i++) {
         switch (face[i]) {
           case 'e':
+            diceResult.results.explosiveSuccess[color]++
             diceResult.results.success++
             break;
           case 's':
@@ -195,6 +203,13 @@ function printResults (diceResult, message, client, desc) {
   } else {
     message.reply("No dice rolled.");
     return;
+  }
+  if (diceResult.explosiveSuccess.white > 0 || diceResult.explosiveSuccess.black > 0)  {
+    response += printEmoji('explosiveSuccess', client) + '('
+    Object.keys(diceResult.explosiveSuccess).forEach((color) => {
+      if (diceResult.explosiveSuccess[color] > 0) response += printEmoji(`${color}`, client) + diceResult.explosiveSuccess[color] + ' ';
+    });
+    response += ') '
   }
   //prints symbols
   symbolOrder.forEach((symbol) => {

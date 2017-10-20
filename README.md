@@ -23,10 +23,14 @@ Commands:
    - !roll wwwbb (must use single character identifiers)
    - !roll 1white 2black (must specify a number before each identifier)
 
+- !Keep: ie !keep 12 - keeps the first, second, and discards the rest of the dice
+- !Add: ie !add ww - adds specified dice to previous dicepool.
+- !Reroll: ie !reroll 12 - rerolls the first and second dice without modifying the rest of the dicepool
+
 - !Poly: rolls any combination of polyhedral dice with optional modifier
 Examples:
   !poly 1d4 2d6+1 1d100-60
-  
+
 - !help          Type '!help topic for further information
   - !roll        rolls any combination of lr5 dice and returns the results
 
