@@ -1,5 +1,8 @@
+1.0.3
+  -added !add !reroll and !keep commands
+
 1.0.2
-  added !poly roll module
+  -added !poly roll module
 
 1.0.1
   -moved S to skill die

@@ -3,11 +3,10 @@ var printEmoji = require("./printEmoji.js").print;
 
 
 
-function roll(params, message, client, desc) {
-  var channel = message.channel.id;
-  var diceResult = {};
-  diceResult[channel] = initdiceResult(diceResult);
+function roll(diceResult, params, message, client, desc, add) {
 
+  if (add === undefined) diceResult = initdiceResult(diceResult);
+  if (diceResult === undefined) return;
   if (params[0] == undefined) {
     message.reply('No dice rolled.');
     return;
@@ -18,18 +17,34 @@ function roll(params, message, client, desc) {
 
   //rolls each die and begins rollResults
   diceOrder.forEach((die) => {
-    diceResult[channel].roll[die].push(rollDice(die))
+    diceResult.roll[die].push(rollDice(die))
   });
 
   //counts the symbols rolled and returns them in diceResult.results
-  diceResult[channel] = countSymbols(diceResult[channel], client);
-
-  //prints final results to channel
-  printResults(diceResult[channel].results, message, client, desc);
-  return;
+  return countSymbols(diceResult, message, client, desc);
 }
 
-//init diceResult[channel]
+function keep(diceResult, message, client, params, desc, reroll) {
+  if (diceResult === undefined) return;
+  var keeperResults = initdiceResult();
+  if (reroll !== undefined) keeperResults.roll = diceResult.roll;
+  if (params.length === 1) params = params[0].split('')
+  params.forEach((keeper) => {
+    let i=0;
+    Object.keys(diceResult.roll).forEach((color) => {
+      diceResult.roll[color].forEach((face) => {
+        if (+keeper === i+1) {
+          if (reroll !== undefined) keeperResults.roll[color].splice(i, 1, rollDice(color))
+          else keeperResults.roll[color].push(face);
+        }
+        i++;
+      });
+    });
+  });
+  return countSymbols(keeperResults, message, client, desc);
+}
+
+//init diceResult
 function initdiceResult() {
   var diceResult = {
     roll: {
@@ -135,8 +150,13 @@ function rollDice(die) {
   else return diceFaces[die];
 }
 
-
-function countSymbols(diceResult, client) {
+function countSymbols(diceResult, message, client, desc) {
+  diceResult.results = {
+    face: '',
+    success: 0,
+    oppertunity: 0,
+    strife: 0,
+  }
   Object.keys(diceResult.roll).forEach((color) => {
     diceResult.roll[color].forEach((face) => {
       if (color === 'white' || color === 'black') diceResult.results.face += printEmoji(`${color}${face}`, client);
@@ -144,7 +164,6 @@ function countSymbols(diceResult, client) {
       for(let i=0; face.length > i; i++) {
         switch (face[i]) {
           case 'e':
-            diceResult.results.explosiveSuccess++
             diceResult.results.success++
             break;
           case 's':
@@ -162,26 +181,31 @@ function countSymbols(diceResult, client) {
       }
     });
   });
+  printResults(diceResult.results, message, client, desc);
   return diceResult;
 }
 
 function printResults (diceResult, message, client, desc) {
-  let symbolOrder = ['explosiveSuccess', 'success', 'oppertunity', 'strife'];
+  let symbolOrder = ['success', 'oppertunity', 'strife'];
   let response = '';
-  symbolOrder.forEach((symbol) => {
-    if (diceResult[symbol] !== 0) response += printEmoji(`${symbol}`, client) + diceResult[symbol] + ' ';
-  })
+  //prints faces
   if (diceResult.face != '') {
     if (diceResult.face.length > 1500) diceResult.face = 'Too many dice to display.'
     message.channel.send(diceResult.face);
-    message.reply(desc + " results:" + "\n\n\t" + response);
   } else {
     message.reply("No dice rolled.");
+    return;
   }
+  //prints symbols
+  symbolOrder.forEach((symbol) => {
+    if (diceResult[symbol] !== 0) response += printEmoji(`${symbol}`, client) + diceResult[symbol] + ' ';
+  });
+  if (diceResult.face != '') message.reply(desc + " results:" + "\n\n\t" + response);
 }
 
 module.exports = {
     roll: roll,
+    keep: keep,
     processType: processType,
     rollDice: rollDice,
     countSymbols: countSymbols,

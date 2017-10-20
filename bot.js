@@ -5,6 +5,9 @@ const version = require('./package.json').version;
 var roll = require("./modules/roll.js").roll;
 var help = require("./modules/help.js").help;
 var poly = require("./modules/poly.js").poly;
+var keep = require("./modules/roll.js").keep;
+var add = require("./modules/roll.js").roll;
+var diceResult = {};
 
 client.login(config.token);
 
@@ -15,6 +18,7 @@ client.on('ready', () => {
 
 //Called whenever a users send a message to the server
 client.on("message", message => {
+  var channel = message.channel.id;
   //Ignore messages sent by the bot
   if (message.author.bot) return;
   //Ignore messages that dont start with the command symbol
@@ -84,8 +88,18 @@ client.on("message", message => {
   switch (command) {
     case 'roll':
     case 'r':
-      roll(params, message, client, desc);
+      diceResult[channel] = roll(diceResult[channel], params, message, client, desc);
       break;
+    case 'keep':
+      diceResult[channel] = keep(diceResult[channel], message, client, params, desc);
+      break;
+    case 'add':
+      diceResult[channel] = roll(diceResult[channel], params, message, client, desc, 'add');
+      break;
+    case 'reroll':
+    case 'rr':
+      diceResult[channel] = keep(diceResult[channel], message, client, params, desc, 'reroll');
+      break
     case 'help':
     case 'h':
       help(params, message);
@@ -99,5 +113,4 @@ client.on("message", message => {
     default:
       break;
   }
-
 });
