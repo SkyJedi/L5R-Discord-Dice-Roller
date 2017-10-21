@@ -1,6 +1,6 @@
 # L5R-Discord-Dice-Roller
 
-Invite link https://discordapp.com/oauth2/authorize?client_id=370372169584082957&scope=bot&permissions=262144
+Invite link https://discordapp.com/oauth2/authorize?client_id=371281516195479562&scope=bot&permissions=262144
 
 A Discord Bot Companion for the L5R RPG
 
