@@ -1,17 +1,17 @@
 {
-  "name": "lr5-discord-dice-roller",
+  "name": "l5r-discord-dice-roller",
   "version": "1.0.3",
-  "description": "discord dice bot for LR5",
+  "description": "discord dice bot for L5R",
   "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SkyJedi/LR5-Discord-Dice-Roller.git"
+    "url": "git+https://github.com/SkyJedi/L5R-Discord-Dice-Roller.git"
   },
   "keywords": [
-    "LR5",
+    "L5R",
     "discord",
     "dicebot",
     "dice",
@@ -23,9 +23,9 @@
   "author": "SkyJedi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SkyJedi/LR5-Discord-Dice-Roller/issues"
+    "url": "https://github.com/SkyJedi/L5R-Discord-Dice-Roller/issues"
   },
-  "homepage": "https://github.com/SkyJedi/LR5-Discord-Dice-Roller#readme",
+  "homepage": "https://github.com/SkyJedi/L5R-Discord-Dice-Roller#readme",
   "dependencies": {
     "discord.js": "^11.2.1",
     "firebase": "^4.5.2"

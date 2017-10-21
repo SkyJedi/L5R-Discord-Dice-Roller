@@ -1,12 +1,12 @@
-# LR5-Discord-Dice-Roller
+# L5R-Discord-Dice-Roller
 
 Invite link https://discordapp.com/oauth2/authorize?client_id=370372169584082957&scope=bot&permissions=262144
 
-A Discord Bot Companion for the LR5 RPG
+A Discord Bot Companion for the L5R RPG
 
 #Usage
 Commands:
-- !roll   rolls any combination of lr5 dice and returns results
+- !roll   rolls any combination of L5R dice and returns results
   - You may add " " at the end of the line to give the roll a name
 
   DICE IDENTIFIERS
@@ -32,7 +32,7 @@ Examples:
   !poly 1d4 2d6+1 1d100-60
 
 - !help          Type '!help topic for further information
-  - !roll        rolls any combination of lr5 dice and returns the results
+  - !roll        rolls any combination of L5R dice and returns the results
 
 #Installation and Setup
 

@@ -1,6 +1,6 @@
 function help(params, message) {
   if (params == "") {
-    message.channel.send("```prolog\ntype '!Help [topic]' for futher information\n!Roll: rolls any combination of lr5 dice\n!Poly: rolls any combination of polyhedral dice\n!Keep: ie !keep 12 - keeps the first, second, and discards the rest of the dice\n!Add: ie !add ww - adds specified dice to previous dicepool.\n!Reroll: ie !reroll 12 - rerolls the first and second dice without modifying the rest of the dicepool\n!Help: displays help for topics\n\nfor more information join the LR5 Assistant Bot discord server 'https://discord.gg/mvqj7sy'\n```");
+    message.channel.send("```prolog\ntype '!Help [topic]' for futher information\n!Roll: rolls any combination of L5R dice\n!Poly: rolls any combination of polyhedral dice\n!Keep: ie !keep 12 - keeps the first, second, and discards the rest of the dice\n!Add: ie !add ww - adds specified dice to previous dicepool.\n!Reroll: ie !reroll 12 - rerolls the first and second dice without modifying the rest of the dicepool\n!Help: displays help for topics\n\nfor more information join the L5R Assistant Bot discord server 'https://discord.gg/mvqj7sy'\n```");
   } else {
     var topic = params[0];
     switch (topic) {
