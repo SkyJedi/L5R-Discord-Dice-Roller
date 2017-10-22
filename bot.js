@@ -90,17 +90,17 @@ client.on("message", message => {
   switch (command) {
     case 'roll':
     case 'r':
-      diceResult[channel] = roll(diceResult[channel][userid], params, message, client, desc);
+      diceResult[channel][userid] = roll(diceResult[channel][userid], params, message, client, desc);
       break;
     case 'keep':
-      diceResult[channel] = keep(diceResult[channel][userid], message, client, params, desc);
+      diceResult[channel][userid] = keep(diceResult[channel][userid], message, client, params, desc);
       break;
     case 'add':
-      diceResult[channel] = roll(diceResult[channel][userid], params, message, client, desc, 'add');
+      diceResult[channel][userid] = roll(diceResult[channel][userid], params, message, client, desc, 'add');
       break;
     case 'reroll':
     case 'rr':
-      diceResult[channel] = keep(diceResult[channel][userid], message, client, params, desc, 'reroll');
+      diceResult[channel][userid] = keep(diceResult[channel][userid], message, client, params, desc, 'reroll');
       break
     case 'help':
     case 'h':
