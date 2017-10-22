@@ -19,6 +19,8 @@ client.on('ready', () => {
 //Called whenever a users send a message to the server
 client.on("message", message => {
   var channel = message.channel.id;
+  var userid = message.author.id;
+  if (diceResult[channel] === undefined) diceResult[channel] = {};
   //Ignore messages sent by the bot
   if (message.author.bot) return;
   //Ignore messages that dont start with the command symbol
@@ -88,22 +90,21 @@ client.on("message", message => {
   switch (command) {
     case 'roll':
     case 'r':
-      diceResult[channel] = roll(diceResult[channel], params, message, client, desc);
+      diceResult[channel] = roll(diceResult[channel][userid], params, message, client, desc);
       break;
     case 'keep':
-      diceResult[channel] = keep(diceResult[channel], message, client, params, desc);
+      diceResult[channel] = keep(diceResult[channel][userid], message, client, params, desc);
       break;
     case 'add':
-      diceResult[channel] = roll(diceResult[channel], params, message, client, desc, 'add');
+      diceResult[channel] = roll(diceResult[channel][userid], params, message, client, desc, 'add');
       break;
     case 'reroll':
     case 'rr':
-      diceResult[channel] = keep(diceResult[channel], message, client, params, desc, 'reroll');
+      diceResult[channel] = keep(diceResult[channel][userid], message, client, params, desc, 'reroll');
       break
     case 'help':
     case 'h':
       help(params, message);
-      break;
     case "ver":
       message.channel.send(client.user.username + ": version: " + version);
       break;
